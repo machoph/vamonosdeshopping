@@ -1,0 +1,10 @@
+<VirtualHost *:443>
+SSLEngine On
+SSLCertificateFile /etc/apache2/ssl/www.vamonosdeshoping.com.certificated.crt
+SSLCertificateKeyFile /etc/apache2/ssl/www.vamonosdeshoping.com.key
+SSLCACertificateFile /etc/apache2/ssl/www.vamonosdeshoping.com.intermediate.crt
+ServerName vamonosdeshopping.com
+ServerAlias www.vamonosdeshopping.com
+ServerAdmin ophillips@azulcobaltocr.com
+DocumentRoot /home/vamonosdeshoping/store/
+</VirtualHost>

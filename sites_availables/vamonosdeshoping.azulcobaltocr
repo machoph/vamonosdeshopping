@@ -1,0 +1,6 @@
+<VirtualHost *:80>
+ServerName vamonosdeshoping.azulcobaltocr.com
+ServerAlias www.vamonosdeshoping.azulcobaltocr.com
+ServerAdmin ophillips@azulcobaltocr.com
+DocumentRoot /home/vamonosdeshoping/store/
+</VirtualHost>
