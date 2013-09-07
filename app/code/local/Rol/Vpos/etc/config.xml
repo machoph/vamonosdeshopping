@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Rol_Vpos>
+            <version>1.0.1</version>
+        </Rol_Vpos>
+    </modules>
+    <global>
+        <models>
+            <vpos>
+                <class>Rol_Vpos_Model</class>
+            </vpos>
+        </models>
+        <helpers>
+            <vpos>
+                <class>Rol_Vpos_Helper</class>
+            </vpos>
+        </helpers>
+        <blocks>
+            <vpos>
+                <class>Rol_Vpos_Block</class>
+            </vpos>
+        </blocks>
+    </global>
+    <default>
+        <payment>
+            <vpos>
+                <model>vpos/vpos</model>// very important thing, here you select the model for your payment method
+                <active>1</active>
+                <order_status>pending</order_status>
+                <title>Raiffeisen Virtual Pos</title>
+                <payment_action>sale</payment_action>
+                <submit_url>https://</submit_url>
+                <merchant_id>Merchant-Id</merchant_id>
+                <allowspecific>0</allowspecific>
+                <sort_order>1</sort_order>
+            </vpos>
+        </payment>
+    </default>
+    <frontend>
+        <routers>
+            <vpos>
+                <use>standard</use>
+                <args>
+                    <module>Rol_Vpos</module>
+                    <frontName>vpos</frontName>
+                </args>
+            </vpos>
+        </routers>
+        <translate>
+            <modules>
+                <vpos>
+                    <files>
+                        <default>vpos.csv</default>
+                    </files>
+                </vpos>
+            </modules>
+        </translate>
+    </frontend>
+</config>

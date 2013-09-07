@@ -1,0 +1,121 @@
+<?php
+/**
+ * Acumen for Magento
+ * http://gravitydept.com/to/acumen-magento
+ *
+ * @author     Brendan Falkowski
+ * @package    gravdept_acumen
+ * @copyright  Copyright 2012 Gravity Department http://gravitydept.com
+ * @license    All rights reserved.
+ * @version    1.3.4
+ */
+?>
+<?php
+/**
+ * Category left navigation
+ *
+ * @see Mage_Catalog_Block_Navigation
+ */
+?>
+
+<?php if (!Mage::registry('current_category')) return ?>
+
+<?php $_categories = $this->getCurrentChildCategories() ?>
+<?php //if ($_categories.length <=0){
+	//print_r($_categories);// = $this->getCurrentCategories();
+//}
+
+?>
+
+<?php $_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
+
+<?php if($_count): ?>
+    <div class="block block-layered-nav">
+        <div class="block-title">
+            <h2><?php echo $this->__('Shop By') ?></h2>
+        </div>
+        
+        <div class="block-content filter">
+            <dl id="narrow-by-list">
+                <dt><?php echo $this->__('Category') ?></dt>
+                <dd>
+                    <ol>
+                        <?php foreach ($_categories as $_category): ?>
+                            <?php  if($_category->getIsActive()): ?>
+                                <li>
+                                    <a href="<?php echo $this->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; ?>>
+                                        <span class="count"><?php echo $_category->getProductCount() ?></span>
+                                        <?php echo $this->htmlEscape($_category->getName()) ?>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                        <?php endforeach ?>
+                    </ol>
+                </dd>
+            </dl>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php
+      /* Get the categories that are active for the store */
+      $_main_categories=$this->getStoreCategories();
+      /* Get the current category the user is in */
+      $_current_category=$this->getCurrentCategory();
+      /* Get the current category path */
+      $_categorypath = $this->getCurrentCategoryPath();
+?>
+<!-- 
+    <?php if ($_main_categories): ?>
+       <div class="block block-layered-nav">
+       <div class="block-title">
+            <h2><?php echo $this->__('Navegue') ?></h2>
+        </div>
+       <div class="block-content filter">
+            <dl id="narrow-by-list">
+                        <?php
+                            /* This bit cycles through the categories - setting the next one to current */
+                            foreach ($_main_categories as $_main_category):
+                                if($_main_category->getIsActive()):
+                                    $cur_category=Mage::getModel('catalog/category')->load($_main_category->getId());
+                                    $layer = Mage::getSingleton('catalog/layer');
+                                    $layer->setCurrentCategory($cur_category);
+                        ?>
+                         <dd>
+                    <ol>
+
+                                    <li><a href="<?php echo $this->getCurrentCategory()->getUrl()?>" <?php if ($this->getCurrentCategory()->getName() == $_current_category->getName): ?> class="selected"<?php endif; ?> ><?php echo $this->getCurrentCategory()->getName();?></a>
+
+                                        <?php $_categories=$this->getCurrentChildCategories()?>
+
+                                        <?php if($_categories->count()): ?>
+                                            <ul style="display: none" class="subcategory">
+                                                <? foreach ($_categories as $_category):?>
+                                                   <? if($_category->getIsActive()):
+                                                          $cur_subcategory=Mage::getModel('catalog/category')->load($_category->getId());
+                                                          $layer = Mage::getSingleton('catalog/layer');
+                                                          $layer->setCurrentCategory($cur_subcategory);
+                                                   ?>
+
+                                                          <li><a href="<?php echo $this->getCategoryUrl($_category)?>" <?php if ($_category->getName() == $_current_category->getName): ?> class="selected"<?php endif; ?>><?php echo $_category->getName()?></a></li>
+                                                   <? endif;?>
+
+                                                 <?endforeach?>
+
+                                            </ul>
+                                            <?php $layer->setCurrentCategory($_current_category);  ?>
+
+                                        <? endif; ?>
+                                    </li>
+
+                             <?php endif; ?>
+
+                        <?php endforeach; ?>
+                        </ol>
+                        </dd>
+           </dl>
+           </div>         
+        </div>
+    <?php endif;  ?>
+     -->
+     

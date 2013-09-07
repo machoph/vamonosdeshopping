@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Rol_Vpos>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Rol_Vpos>
+    </modules>
+</config>
+
